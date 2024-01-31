@@ -1,13 +1,3 @@
-.square{
-    background-color: aqua;
-    margin: 20;
-    bottom: 100;
-    right: 100;
-    height: 40px;
-    width: 40px;
-
-
-}
 .asquare {
     background-color: bisque;
     margin: 20;
@@ -15,6 +5,7 @@
     right: 100;
     height: 40px;
     width: 40px;
+    position: absolute;
     border: 1px solid black;
 
 }
