@@ -3,7 +3,9 @@ const height=document.getElementById('height');
 const width=document.getElementById('width');
 const rebuild = document.getElementById('rebuild');
 const square = document.getElementById('square');
-rebuild.addEventListener('click', rebuildfunction); 
+rebuild.addEventListener('click', rebuildranfunction); 
+width.addEventListener('change', rebuildfunction)
+height.addEventListener('change', rebuildfunction)
 var colorvalue = 'aqua';
 
 
@@ -15,20 +17,40 @@ var colorvalue = 'aqua';
         for (let r = 0; r < width.value; r++) {
           gridItem = document.createElement('div');
           console.log(i,r); 
-          gridItem.style.left = ((i*50)+150).toString() + 'px';
-          gridItem.style.top = ((r*50)+50).toString() + 'px';
+          gridItem.style.left = ((i*43)+100).toString() + 'px';
+          gridItem.style.top = ((r*43)+50).toString() + 'px';
           gridItem.className = 'asquare';
+          gridItem.style.backgroundColor = colorvalue;
           gridItem.addEventListener('click', changecolor); 
           square.appendChild(gridItem);
         }
     }
-
-}
-function changecolor(event){
+    }
+function rebuildranfunction(){
+    let gridItem;
     colorvalue = colordrop.value;
-    event.target.style.backgroundColor = colorvalue;
+    square.style.backgroundColor = colorvalue;
+for (let i = 0; i < height.value; i++) {
+    for (let r = 0; r < width.value; r++) {
+      gridItem = document.createElement('div');
+      console.log(i,r); 
+      gridItem.style.left = ((i*43)+100).toString() + 'px';
+      gridItem.style.top = ((r*43)+50).toString() + 'px';
+      gridItem.className = 'asquare';
+      const RE = Math.floor(Math.random()*255);
+      const GR = Math.floor(Math.random()*255);
+      const BL = Math.floor(Math.random()*255);
+      gridItem.style.backgroundColor = `rgb(${RE},${GR},${BL})`;
+      gridItem.addEventListener('click', changecolor); 
+      square.appendChild(gridItem);
+    }
+}
 }
 
+function changecolor(event){
+colorvalue = colordrop.value;
+event.target.style.backgroundColor = colorvalue;
+}
 
 /*
     function rebuildfunction(){
